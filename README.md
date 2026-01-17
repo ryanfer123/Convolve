@@ -74,6 +74,14 @@ For PNG/JPG inputs, use the image pipeline. It writes annotated images by defaul
 ```
 Annotated images are in `sample_output/visuals`.
 
+## Google Colab (Quick Start)
+1. Upload the repo or clone it.
+2. Install requirements:
+```
+pip install -r requirements.txt
+```
+3. Run either the PDF or PNG pipeline as above.
+
 ## Notes
 - OCR is optional and triggered with `--ocr`. On macOS, the PNG pipeline uses EasyOCR.
 - Signature/stamp detection runs only if `--sigstamp_model` is provided. Class names must include "signature" and "stamp".
@@ -90,3 +98,4 @@ Use the labeling workflow in [labeling/README.md](labeling/README.md) to create 
 ## Cost & Latency
 - This baseline estimates `$0.00` cost and logs processing time per document.
 - Update cost estimation when adding OCR/ML models.
+

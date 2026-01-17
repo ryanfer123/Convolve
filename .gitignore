@@ -10,7 +10,6 @@ labeling/label_studio_storage/
 __pycache__/
 *.pyc
 images.json
-sample_output/result.json
 sample_output/visuals/
 sample_output/single_run/
 yolov8n.pt
