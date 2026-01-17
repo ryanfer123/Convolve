@@ -75,12 +75,32 @@ For PNG/JPG inputs, use the image pipeline. It writes annotated images by defaul
 Annotated images are in `sample_output/visuals`.
 
 ## Google Colab (Quick Start)
-1. Upload the repo or clone it.
-2. Install requirements:
+1. Mount Google Drive:
 ```
-pip install -r requirements.txt
+from google.colab import drive
+drive.mount('/content/drive')
 ```
-3. Run either the PDF or PNG pipeline as above.
+2. Clone repo + install requirements:
+```
+!git clone https://github.com/ryanfer123/Convolve.git
+%cd Convolve
+!pip install -r requirements.txt
+```
+3. Download dataset from Drive link:
+```
+!pip install gdown
+!gdown https://drive.google.com/uc?id=1xoyqWgxrz9_wTTlL4ZDw4DSOc6KiI-CI -O data.zip
+!unzip -q data.zip -d /content/data
+```
+4. Test PNGs:
+```
+!python run_sigstamp_images.py \
+  --input_dir /content/data/images \
+  --output_dir /content/out \
+  --model_path /content/drive/MyDrive/best.pt \
+  --write_json
+```
+Outputs: `/content/out/visuals` and `/content/out/result.json`.
 
 ## Notes
 - OCR is optional and triggered with `--ocr`. On macOS, the PNG pipeline uses EasyOCR.
