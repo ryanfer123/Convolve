@@ -1,0 +1,11 @@
+.DS_Store
+.venv/
+*.pdf
+train/
+yolo_data/images/
+yolo_data/labels/
+labeling/.venv/
+label_studio_storage/
+labeling/label_studio_storage/
+__pycache__/
+*.pyc

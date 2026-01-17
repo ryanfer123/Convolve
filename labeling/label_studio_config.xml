@@ -1,0 +1,7 @@
+<View>
+  <Image name="image" value="$image"/>
+  <RectangleLabels name="label" toName="image">
+    <Label value="signature"/>
+    <Label value="stamp"/>
+  </RectangleLabels>
+</View>
