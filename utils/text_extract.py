@@ -10,12 +10,32 @@ from utils.vision import render_pdf_to_images
 
 def _ocr_image(image) -> str:
     try:
-        import pytesseract
+        from paddleocr import PaddleOCR
+
+        ocr = PaddleOCR(use_angle_cls=True, lang="en", show_log=False)
+        result = ocr.ocr(image, cls=True)
+        texts = []
+        if not result:
+            return ""
+        for line in result:
+            if line and isinstance(line, list):
+                for seg in line:
+                    if len(seg) >= 2:
+                        texts.append(seg[1][0])
+        return "\n".join([t for t in texts if t.strip()]).strip()
     except Exception:
-        return ""
+        pass
 
     try:
-        return pytesseract.image_to_string(image) or ""
+        import easyocr
+
+        reader = easyocr.Reader(["en"], gpu=False)
+        result = reader.readtext(image)
+        texts = []
+        for seg in result:
+            if len(seg) >= 2:
+                texts.append(seg[1])
+        return "\n".join([t for t in texts if t.strip()]).strip()
     except Exception:
         return ""
 
